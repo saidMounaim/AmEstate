@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}AmEstate | Real Estate{% endblock %}</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicons -->
+        <link href="img/favicon.png" rel="icon">
+        <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+        <!-- Bootstrap CSS File -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/css/animate.min.css" rel="stylesheet">
+        <link href="/css/ionicons.min.css" rel="stylesheet">
+        <link href="/css/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        <link href="/css/style.css" rel="stylesheet">
+        {% block stylesheets %}{% endblock %}
+    </head>
+
+    <body>
+
+    {% include 'includes/header.html.twig' %}
+        {% block body %}
+        
+        {% endblock %}
+    {% include 'includes/footer.html.twig' %}
+
+    <div class="demo-settings-options">
+        <ul>
+            <li class="demo-toggle-skin" style="background-color: #2eca6a;" data-color=""></li>
+            <li class="demo-toggle-skin" style="background-color: #8e44ad;" data-color="#8e44ad"></li>
+            <li class="demo-toggle-skin" style="background-color: #626EEF;" data-color="#626EEF"></li>
+            <li class="demo-toggle-skin" style="background-color: #FC624D;" data-color="#FC624D"></li>
+        </ul>
+    </div>
+    <!-- JavaScript Libraries -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-migrate.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/easing.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/scrollreveal.min.js"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="/js/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="/js/main.js"></script>
+    {% block javascripts %}{% endblock %}
+    </body>
+</html>

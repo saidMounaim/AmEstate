@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AmEstate | Login{% endblock %}
+
+{% block body %}
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Login</h1>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{path('homepage')}}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Login
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+
+<!--/ property Login /-->
+<section class="property-login nav-arrow-b">
+    <div class="container">
+        <div class="row">
+        <form class="form-a" method="POST" action="{{path('login')}}" style="width:100% !important;">
+            <div class="col-md-6 offset-md-3">
+                {% if error %}
+                    <div class="alert alert-danger" >Email Or Password Incorrect</div>
+                {% endif %}
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control form-control-lg form-control-a" type="email" name="_username" id="email" placeholder="Email" value="{{username}}" />
+                </div>
+                <div class="form-group">
+                    <label class="float-left" for="password">Password</label>
+                    <a href="#" class="float-right" >Forgot Password ?</a>
+                    <input class="form-control form-control-lg form-control-a" type="password" name="_password" id="password" placeholder="Password" />
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-a">Login</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

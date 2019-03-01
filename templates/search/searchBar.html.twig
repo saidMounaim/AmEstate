@@ -1,0 +1,28 @@
+{{form_start(search, {'attr':{'class':'form-a'}})}}
+    <div class="row">
+        <div class="col-md-12 mb-2">
+            {{form_row(search.keyword)}}
+        </div>
+        <div class="col-md-6 mb-2">
+            {{form_row(search.type)}}
+        </div>
+        <div class="col-md-6 mb-2">
+            {{form_row(search.status)}}
+        </div>
+        <div class="col-md-6 mb-2">
+            {{form_row(search.bedrooms)}}
+        </div>
+        <div class="col-md-6 mb-2">
+            {{form_row(search.garage)}}
+        </div>
+        <div class="col-md-6 mb-2">
+            {{form_row(search.bathrooms)}}
+        </div>
+        <div class="col-md-6 mb-2">
+            {{form_row(search.minPrice)}}
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+        </div>
+    </div>
+{{form_end(search)}}

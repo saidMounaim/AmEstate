@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AmEstate | {{agent.fullName}}{% endblock %}
+
+{% block body %}
+    <!--/ Intro Single star /-->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">{{agent.fullName}}</h1>
+                        <span class="color-text-a">Agent</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{path('homepage')}}">Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{{path('agent_list')}}">Agents</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                {{agent.fullName}}
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Intro Single End /-->
+
+    <!--/ Agent Single Star /-->
+    <section class="agent-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="agent-avatar-box">
+                                <img src="/images/agents/{{agent.avatar}}" alt="" class="agent-avatar img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-md-5 section-md-t3">
+                            <div class="agent-info-box">
+                                <div class="agent-title">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">
+                                            {{agent.fullName}}
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="agent-content mb-3">
+                                    <p class="content-d color-text-a">
+                                        {{agent.description}}
+                                    </p>
+                                    <div class="info-agents color-a">
+                                        <p>
+                                            <strong>Phone:
+                                            </strong>
+                                            <span class="color-text-a">
+                                                {{agent.phone}}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <strong>Email:
+                                            </strong>
+                                            <span class="color-text-a">
+                                                {{agent.email}}</span>
+                                        </p>
+                                        <p>
+                                            <strong>skype:
+                                            </strong>
+                                            <span class="color-text-a">
+                                                {{agent.skype}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="socials-footer">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a href="{{agent.facebook}}" class="link-one">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="{{agent.twitter}}" class="link-one">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="{{agent.instagram}}" class="link-one">
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="{{agent.pinterest}}" class="link-one">
+                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="{{agent.dribbble}}" class="link-one">
+                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 section-t8 ">
+                    <div class="title-box-d float-left">
+                        <h3 class="title-d float-left">My Properties ({{agent.properties | length}})</h3>
+                    </div>
+                </div>
+                {% if agent.properties is empty %}
+                    <div class="col-md-12">
+                        <div class="alert alert-info">this agent haven't no property yet</div>
+                    </div>
+                {% endif %}
+                <div class="owl-carousel owl-theme" id="carousel-myProperty">
+                    {% for property in agent.properties | reverse %}
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="/images/property/cover/{{property.coverImage}}" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="{{path('property_show', {'slug':property.slug})}}">
+                                                {{property.title|truncate(30)}}
+                                            </h2>
+                                        </div>
+                                        <div class="card-body-a">
+                                            <div class="price-box d-flex">
+                                                <span class="price-a float-left">rent | $
+                                                    {{property.fixPrice}}</span>
+                                            </div>
+                                            <a href="{{path('property_show', {'slug':property.slug})}}" class="link-a">Click here to view
+                                                <span class="ion-ios-arrow-forward"></span>
+                                            </a>
+                                        </div>
+                                        <div class="card-footer-a">
+                                            <ul class="card-info d-flex justify-content-around">
+                                                <li>
+                                                    <h4 class="card-info-title">Area</h4>
+                                                    <span>{{property.area}}m
+                                                        <sup>2</sup>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Beds</h4>
+                                                    <span>{{property.bedrooms}}</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Baths</h4>
+                                                    <span>{{property.bathrooms}}</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Garages</h4>
+                                                    <span>{{property.garage}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ Agent Single End /-->
+    {% endblock %}

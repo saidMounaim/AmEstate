@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AmEstate | Edit Social Media Agent{% endblock %}
+
+{% block body %}
+    <!--/ Intro Single star /-->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">Edit Social Media Agent</h1>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{path('homepage')}}">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Edit Social Media Agent
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Intro Single End /-->
+
+    <!--/ Agent Edit /-->
+    <section class="agent-edit nav-arrow-b">
+        <div class="container">
+            <div class="row">
+                {{form_start(form,{'attr':{'class':'form-a','style':'width:100%'}})}}
+                <div class="col-md-12">
+                    <div class="form-group">
+                        {{form_row(form.facebook)}}
+                    </div>
+                    <div class="form-group">
+                        {{form_row(form.twitter)}}
+                    </div>
+                    <div class="form-group">
+                        {{form_row(form.instagram)}}
+                    </div>
+                    <div class="form-group">
+                        {{form_row(form.pinterest)}}
+                    </div>
+                    <div class="form-group">
+                        {{form_row(form.dribbble)}}
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-a">Edit Social Media</button>
+                    </div>
+                </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </section>
+{% endblock %}
