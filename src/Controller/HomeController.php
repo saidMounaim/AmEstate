@@ -16,7 +16,7 @@ class HomeController extends AbstractController
      */
     public function home(AgentRepository $agent, PropertyRepository $property, ObjectManager $manager)
     {
-        $slider        = $manager->createQuery("SELECT p FROM App\Entity\Property p ORDER BY a.id RAND")->setMaxResults(3)->getResult();
+        $slider        = $manager->createQuery("SELECT p FROM App\Entity\Property p ORDER BY RAND()")->setMaxResults(3)->getResult();
         $latestAgent   = $manager->createQuery("SELECT a FROM App\Entity\Agent a ORDER BY a.id DESC")->setMaxResults(3)->getResult();
         $latestProps   = $manager->createQuery("SELECT p FROM app\Entity\Property p ORDER BY p.id DESC")->setMaxResults(4)->getResult();
         return $this->render('home.html.twig', [

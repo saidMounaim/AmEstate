@@ -78,14 +78,16 @@ class PropertyRepository extends ServiceEntityRepository
 
     }
 
-    public function getLatestProperty()
+    public function getRandomProperty()
     {
         return $this->createQueryBuilder('p')
-            ->orderBy('p.id', 'DESC')
-            ->setMaxResults(4)
+            ->orderBy('RAND()')
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult();
     }
+
+
 
     // /**
     //  * @return Property[] Returns an array of Property objects
