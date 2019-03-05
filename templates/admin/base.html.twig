@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+        {% block title %}AmEstate | Admin{% endblock %}
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <link rel="stylesheet" href="/backend/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/backend/css/perfect-scrollbar.min.css"/>
+        <link rel="stylesheet" href="/backend/css/flag-icon.min.css"/>
+        <link rel="stylesheet" href="/backend/css/style.css"/>
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+
+    <body>
+
+        <div class=" container-scroller">
+            {% include 'admin/includes/header.html.twig' %}
+            {% block body %}{% endblock %}
+            {% include 'admin/includes/footer.html.twig' %}
+        </div>
+
+        <script src="/backend/js/jquery.min.js"></script>
+        <script src="/backend/js/popper.min.js"></script>
+        <script src="/backend/js/bootstrap.min.js"></script>
+        <script src="/backend/js/Chart.min.js"></script>
+        <script src="/backend/js/perfect-scrollbar.jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async="async" defer="defer"></script>
+        <script src="/backend/js/off-canvas.js"></script>
+        <script src="/backend/js/hoverable-collapse.js"></script>
+        <script src="/backend/js/misc.js"></script>
+        <script src="/backend/js/chart.js"></script>
+        <script src="/backend/js/maps.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

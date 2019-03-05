@@ -7,6 +7,7 @@
 <div class="intro intro-carousel">
     <div id="carousel" class="owl-carousel owl-theme">
     {% for s in slider %}
+    <a href="{{path('property_show',{'slug':s.slug})}}" >
         <div class="carousel-item-a intro-item bg-image" style="background-image: url(/images/property/cover/{{s.coverImage}})">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
@@ -21,8 +22,7 @@
                                     <h1 class="intro-title mb-4">
                                         {{s.title|truncate(30)}}</h1>
                                     <p class="intro-subtitle intro-price">
-                                        <a href="#">
-                                            <span class="price-a">{{s.statusProperty}} | $ {{s.fixPrice}}</span></a>
+                                        <span class="price-a">{{s.statusProperty}} | $ {{s.fixPrice}}</span>
                                     </p>
                                 </div>
                             </div>
@@ -30,7 +30,8 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>       
+    </a> 
     {% endfor %}
     </div>
 </div>
