@@ -129,9 +129,15 @@ class Agent implements UserInterface, \Serializable
      */
     private $properties;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Role", mappedBy="agent")
+     */
+    private $AgentRole;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
+        $this->AgentRole = new ArrayCollection();
     }
 
 
@@ -355,9 +361,11 @@ class Agent implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return [
-            'ROLE_USER'
-        ];
+        $roles = $this->AgentRole->map(function ($role) {
+            return $role->getName();
+        })->toArray();
+        $roles[] = 'ROLE_USER';
+        return $roles;
     }
 
     public function getSalt()
@@ -419,6 +427,34 @@ class Agent implements UserInterface, \Serializable
             if ($property->getAgent() === $this) {
                 $property->setAgent(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Role[]
+     */
+    public function getAgentRole(): Collection
+    {
+        return $this->AgentRole;
+    }
+
+    public function addAgentRole(Role $agentRole): self
+    {
+        if (!$this->AgentRole->contains($agentRole)) {
+            $this->AgentRole[] = $agentRole;
+            $agentRole->addAgent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAgentRole(Role $agentRole): self
+    {
+        if ($this->AgentRole->contains($agentRole)) {
+            $this->AgentRole->removeElement($agentRole);
+            $agentRole->removeAgent($this);
         }
 
         return $this;

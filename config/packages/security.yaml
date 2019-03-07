@@ -4,12 +4,27 @@ security:
             algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        database_agent:
+        database_front:
             entity: { class: App\Entity\Agent, property: email }
+        database_back:
+            entity: { class: App\Entity\Agent }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        admin:
+            pattern: ^/admin
+            anonymous: true
+            provider: database_back
+
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
+
+            logout:
+                path: admin_logout
+                target: homepage   
+
         main:
             anonymous: true
             pattern: ^/
@@ -19,7 +34,7 @@ security:
 #            http_basic: ~
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
 
-            provider: database_agent
+            provider: database_front
 
             form_login:
                 login_path: login
@@ -33,5 +48,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-#         - { path: ^/micro-post, roles: ROLE_USER }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }

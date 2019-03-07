@@ -19,4 +19,12 @@ class AdminPropertyController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/property/create", name="admin_property_create")
+     */
+    public function create()
+    {
+        return $this->render('admin/property/create.html.twig');
+    }
+
 }
